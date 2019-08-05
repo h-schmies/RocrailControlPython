@@ -8,9 +8,9 @@ def sendMsg( s, xmlType, xmlMsg ):
 s = socket(AF_INET, SOCK_STREAM)
 s.connect(('localhost', 8051))
  
-# The command "PowerON" is stored ind the variable "rrMsg" 
+# The command "PowerON" is stored ind the variable "rrMsg" in an xml-command and is then pushed to the Rocrail-Server via the sendMsg function
 rrMsg = "<sys cmd=\"go\"/>"
 sendMsg( s, "sys", rrMsg )
  
-# Die Verbindung zum Server wird geschlossen
+# The connection to the server is closed
 s.close()

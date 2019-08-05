@@ -1,16 +1,16 @@
 from socket import *
  
-# Funktion, um Message an Server zu senden
+# Function, to send a message to the Server
 def sendMsg( s, xmlType, xmlMsg ):
   s.send("<xmlh><xml size=\"%d\" name=\"%s\"/></xmlh>%s" %(len(xmlMsg), xmlType, xmlMsg))
  
-# Herstellung einer Verbindung zum Rocrail-Server
+# Creating a connection to the local Rocrail-Server
 s = socket(AF_INET, SOCK_STREAM)
 s.connect(('localhost', 8051))
  
-# Command "Velocity" wird in der Variable "rrMsg" als XML-Befehl gespeichert und mit der Funktion sendMsg and den Server übertragen
+# The command "SetVelocity" is stored ind the variable "rrMsg" in an xml-command and is then pushed to the Rocrail-Server via the sendMsg function
 rrMsg = "<lc  id=\"Reichsbahn\" cmd=\"velocity\" V=\"100\"/>"
 sendMsg( s, "sys", rrMsg )
  
-# Die Verbindung zum Server wird geschlossen
+# The connection to the server is closed
 s.close()
